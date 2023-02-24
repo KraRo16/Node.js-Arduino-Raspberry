@@ -11,6 +11,7 @@
 
         socket.on('data', function (data) {
             console.log(data);
+            `<h3>Some data's from arduino: ${data}</h3>`
         });
 
     </script>
@@ -22,10 +23,8 @@
 <body>
 
     <h1>Communicating from an Arduino to Node.js</h1>
-    <div >
-        <h3>Mouse: <span id="sample"></span></h3>
-    </div>
-
+    <div id="sample"></div>
+    
 
     <script src="index.js" type="module"></script>
 </body>

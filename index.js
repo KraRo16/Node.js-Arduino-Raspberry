@@ -82,7 +82,7 @@ const parser = port.pipe(new ReadlineParser({ delimiter: '\n' }));
 port.pipe(parser);
 
 const app = http.createServer(function(req, res) {
-  res.writeHead(200, {'Content-Type': 'text/html'});
+  res.writeHead(200, { 'Content-Type': 'text/html' });
   res.end(index);
 });
 
@@ -96,11 +96,12 @@ io.on('connection', function(socket) {
     
 });
 
-parser.on('data', function(data) {
+parser.on('data', ( data ) => {
     
   console.log('Received data from port: ' + data);
   io.emit('data', data);
-    
+
 });
 
 app.listen(3000);
+
