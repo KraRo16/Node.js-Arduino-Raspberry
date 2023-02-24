@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+
+<head>
+
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js'></script>
+
+    <script>
+
+        var socket = io();
+
+        socket.on('data', function (data) {
+            console.log(data);
+        });
+
+    </script>
+
+
+
+</head>
+
+<body>
+
+    <h1>Communicating from an Arduino to Node.js</h1>
+    <div >
+        <h3>Mouse: <span id="sample"></span></h3>
+    </div>
+
+
+    <script src="index.js" type="module"></script>
+</body>
+
+</html>
