@@ -1,32 +1,22 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 
 <head>
-
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js'></script>
-
-    <script>
-
-        var socket = io();
-
-        socket.on('data', function (data) {
-            console.log(data);
-            `<h3>Some data's from arduino: ${data}</h3>`
-        });
-
-    </script>
-
-
-
+    <title>Live Data</title>
 </head>
 
 <body>
+    <h1>Live Data:</h1>
+    <div id="data"></div>
 
-    <h1>Communicating from an Arduino to Node.js</h1>
-    <div id="sample"></div>
-    
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        const socket = io();
 
-    <script src="index.js" type="module"></script>
+        socket.on('data', (data) => {
+            document.getElementById('data').innerHTML = 'Some data from Arduino ' + data + ' UUUHHHHUUUU!';
+        });
+    </script>
 </body>
 
 </html>
