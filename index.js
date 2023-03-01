@@ -1,42 +1,3 @@
-// const http = require('http');
-// const fs = require('fs');
-// const index = fs.readFileSync('index.html');
-// const { ReadlineParser } = require('@serialport/parser-readline');
-// const { SerialPort } = require('serialport'); 
-
-// const port = new SerialPort({path:'COM12',
-//   baudRate: 9600,
-//   dataBits: 8,
-//   parity: 'none',
-//   stopBits: 1,
-//   flowControl: false
-// });
-// const parser = port.pipe(new ReadlineParser({ delimiter: '\n' }));
-
-
-// port.pipe(parser);
-
-// const app = http.createServer(function(req, res) {
-//   res.writeHead(200, { 'Content-Type': 'html' });
-//   res.end(index);
-// });
-
-// const { Server } = require("socket.io");
-// const io = new Server();
-
-// io.on('connection', function(socket) {
-    
-//   console.log('Node is listening to port');
-    
-// });
-
-// parser.on('data', (data) => {
-//   console.log('Received data from port: ' + data);
-//   io.emit('data', data);
-// });
-
-// app.listen(3000);
-
 const {SerialPort} = require('serialport');
 const { ReadlineParser } = require('@serialport/parser-readline');
 const express = require('express');
@@ -50,11 +11,13 @@ const port = new SerialPort({path:'COM12',
   parity: 'none',
   stopBits: 1,
   flowControl: false
-});
+});                       //connect to SerialPort with right path COM(NUMBER OF PORT)
+
+
 const parser = new ReadlineParser();
 port.pipe(parser);
 
-let data = '';
+let data = '';            //variable for save data receive
 
 parser.on('data', (line) => {
   console.log(`Received data: ${line}`);
@@ -68,4 +31,4 @@ app.get('/', (req, res) => {
 
 http.listen(3000, () => {
   console.log('Server listening on port 3000');
-});
+});                       // start localhost:3000
